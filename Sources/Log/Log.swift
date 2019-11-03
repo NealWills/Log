@@ -1,5 +1,5 @@
 
-struct Log {
+public struct Log {
     
     static public func setLoggerState(_ open: Open) {
         LogManager.setLoggerState(open)
