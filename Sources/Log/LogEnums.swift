@@ -14,3 +14,41 @@ public enum Level {
 public enum Open{
     case Open, Close
 }
+
+struct logMark {
+    
+    var markTrace = ""
+    
+    var markDebug = ""
+    
+    var markInfo = ""
+    
+    var markWarning = ""
+    
+    var markError = ""
+    
+    init(markTrace: String?=nil, markDebug: String?=nil, markInfo: String?=nil, markWarning: String?=nil, markError: String?=nil) {
+        
+        if markTrace != nil {
+            self.markTrace = markTrace!
+        }
+        
+        if markDebug != nil {
+            self.markDebug = markDebug!
+        }
+        
+        if markInfo != nil {
+            self.markInfo = markInfo!
+        }
+        
+        if markWarning != nil {
+            self.markWarning = markWarning!
+        }
+        
+        if markError != nil {
+            self.markError = markError!
+        }
+    
+    }
+
+}
