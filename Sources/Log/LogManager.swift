@@ -9,7 +9,7 @@ struct LogManager {
     
     
     /// 核心
-    static fileprivate func LogManager(_ level: String, _ items: [Any], fileName: String = #file, line: Int = #line) {
+    static fileprivate func LogManager(_ level: String, _ items: Any..., fileName: String = #file, line: Int = #line) {
         
         if !self.isLogOpen {
             return
@@ -28,6 +28,8 @@ struct LogManager {
         print("")
         print("╔ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═")
         print("  \(strNowTime)", "[\(level)]", "[" + (arrFileName.first ?? "File") + ": \(line)]")
+        
+        
         for item in items {
             print("  \(item)")
         }
