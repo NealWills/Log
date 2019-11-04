@@ -44,8 +44,8 @@ extension Log {
 extension Log {
     
     static public func Log(_ items: Any..., level: Level?=nil, fileName: String = #file, line: Int = #line) {
-        let item = items.count <= 0 ? items : items.first!
-        LogManager.Log(item, fileName: fileName, line: line)
+
+        LogManager.Log(items, fileName: fileName, line: line)
     }
     
 }
@@ -53,29 +53,28 @@ extension Log {
 extension Log {
 
     static public func Trace(_ items: Any..., fileName: String = #file, line: Int = #line) {
-        
-        let item = items.count <= 0 ? items : items.first!
-        LogManager.LevelLog(item, fileName: fileName, line: line, level: .Trace)
+    
+        LogManager.LevelLog(items, fileName: fileName, line: line, level: .Trace)
     }
 
     static public func Debug(_ items: Any..., fileName: String = #file, line: Int = #line) {
-        let item = items.count <= 0 ? items : items.first!
-        LogManager.LevelLog(item, fileName: fileName, line: line, level: .Debug)
+        
+        LogManager.LevelLog(items, fileName: fileName, line: line, level: .Debug)
     }
 
     static public func Info(_ items: Any..., fileName: String = #file, line: Int = #line) {
-        let item = items.count <= 0 ? items : items.first!
-        LogManager.LevelLog(item, fileName: fileName, line: line, level: .Info)
+        
+        LogManager.LevelLog(items, fileName: fileName, line: line, level: .Info)
     }
 
     static public func Warning(_ items: Any..., fileName: String = #file, line: Int = #line) {
-        let item = items.count <= 0 ? items : items.first!
-        LogManager.LevelLog(item, fileName: fileName, line: line, level: .Warning)
+        
+        LogManager.LevelLog(items, fileName: fileName, line: line, level: .Warning)
     }
 
     static public func Error(_ items: Any..., fileName: String = #file, line: Int = #line) {
-        let item = items.count <= 0 ? items : items.first!
-        LogManager.LevelLog(item, fileName: fileName, line: line, level: .Error)
+        
+        LogManager.LevelLog(items, fileName: fileName, line: line, level: .Error)
     }
     
 }
@@ -83,8 +82,8 @@ extension Log {
 extension Log {
     
     static public func Api(api: String, method: ApiMethod, process: ApiProcess, items: Any..., level: Level?=nil) {
-        let item = items.count <= 0 ? items : items.first!
-        LogManager.API(api: api, method: method, process: process, item, level: level)
+        
+        LogManager.API(api: api, method: method, process: process, items, level: level)
     }
     
 }

@@ -27,7 +27,7 @@ struct LogManager {
     static var mark = logMark.init()
     
     /// 核心
-    static fileprivate func LogBase(_ level: String, _ items: Any..., fileName: String = #file, line: Int = #line) {
+    static fileprivate func LogBase(_ level: String, _ items: [Any], fileName: String = #file, line: Int = #line) {
         
         if self.open == .Close {
             return
@@ -47,13 +47,15 @@ struct LogManager {
         print("╔ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═")
         print("  \(strNowTime)", "[\(level)]", "[" + (arrFileName.first ?? "File") + ": \(line)]")
         
-        print(" ", items.first!)
+        for item in items {
+            print("\n ", item)
+        }
         
         print("╚ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═")
     }
     
     /// api相关日志
-    static fileprivate func LogApi(api: String, method: ApiMethod, process: ApiProcess, level: String, _ items: Any..., fileName: String = #file, line: Int = #line) {
+    static fileprivate func LogApi(api: String, method: ApiMethod, process: ApiProcess, level: String, _ items: [Any], fileName: String = #file, line: Int = #line) {
         
         if self.open == .Close {
             return
@@ -75,7 +77,10 @@ struct LogManager {
         
         let dProcess = process == .Request ? " →→ →→ " : " ←← ←← "
         print(" ", "[\(method)]", dProcess, "[..\(api)]")
-        print(" ", items.first!)
+        for item in items {
+            print(" ", item)
+        }
+        
         
         print("╚ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═")
     }
@@ -91,7 +96,7 @@ extension LogManager {
 //MARK:- 模式日志
 extension LogManager {
     
-    static func LevelLog(_ items: Any..., fileName: String = #file, line: Int = #line, level: Level) {
+    static func LevelLog(_ items: [Any], fileName: String = #file, line: Int = #line, level: Level) {
         if level.rawValue < self.minimunLevel.rawValue {
             return
         }
@@ -115,27 +120,27 @@ extension LogManager {
             break
         }
         
-        LogBase(markLevel, items.first!, fileName: fileName, line: line)
+        LogBase(markLevel, items, fileName: fileName, line: line)
     }
     
 }
 
 //MARK:- 普通日志
 extension LogManager {
-    static func Log(_ items: Any..., level: Level?=nil, fileName: String = #file, line: Int = #line) {
+    static func Log(_ items: [Any], level: Level?=nil, fileName: String = #file, line: Int = #line) {
         
         if (level?.rawValue ?? 2) < self.minimunLevel.rawValue {
             return
         }
         
         let levelL = "\(level ?? .Info)"
-        LogBase("\(levelL)", items.first!, fileName: fileName, line: line)
+        LogBase("\(levelL)", items, fileName: fileName, line: line)
     }
 }
 
 //MARK:- API日志
 extension LogManager {
-    static func API(api: String, method: ApiMethod, process: ApiProcess, _ items: Any..., level: Level?=nil, fileName: String = #file, line: Int = #line) {
+    static func API(api: String, method: ApiMethod, process: ApiProcess, _ items: [Any], level: Level?=nil, fileName: String = #file, line: Int = #line) {
         
         
         if (level?.rawValue ?? 2) < self.minimunLevel.rawValue {
@@ -143,7 +148,7 @@ extension LogManager {
         }
         let levelL = "\(level ?? .Info)"
         
-        LogApi(api: api, method: method, process: process, level: levelL, items.first!, line: line)
+        LogApi(api: api, method: method, process: process, level: levelL, items, line: line)
     }
 }
 
