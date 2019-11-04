@@ -7,46 +7,58 @@
 
 import Foundation
 
-public enum Level {
-    case Trace, Debug, Info, Warning, Error
+public enum Level: Int {
+    case Trace = 0
+    case Debug = 1
+    case Info = 2
+    case Warning = 3
+    case Error = 4
 }
 
-public enum Open{
+public enum Open {
     case Open, Close
+}
+
+public enum ApiMethod {
+    case POST, GET, Delete
+}
+
+public enum ApiProcess {
+    case Request, Response
 }
 
 struct logMark {
     
-    var markTrace = ""
+    var Trace = ""
     
-    var markDebug = ""
+    var Debug = ""
     
-    var markInfo = ""
+    var Info = ""
     
-    var markWarning = ""
+    var Warning = ""
     
-    var markError = ""
+    var Error = ""
     
     init(markTrace: String?=nil, markDebug: String?=nil, markInfo: String?=nil, markWarning: String?=nil, markError: String?=nil) {
         
         if markTrace != nil {
-            self.markTrace = markTrace!
+            self.Trace = markTrace!
         }
         
         if markDebug != nil {
-            self.markDebug = markDebug!
+            self.Debug = markDebug!
         }
         
         if markInfo != nil {
-            self.markInfo = markInfo!
+            self.Info = markInfo!
         }
         
         if markWarning != nil {
-            self.markWarning = markWarning!
+            self.Warning = markWarning!
         }
         
         if markError != nil {
-            self.markError = markError!
+            self.Error = markError!
         }
     
     }
