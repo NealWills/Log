@@ -31,7 +31,7 @@ struct LogManager {
         
         
         for item in items {
-            print("  \(item)")
+            print(item)
         }
         print("╚ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═")
     }

@@ -7,6 +7,8 @@ final class LogTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
 //        XCTAssertEqual(Log().text, "Hello, World!")
+        
+//        Log.Info("123")
     }
 
     static var allTests = [
