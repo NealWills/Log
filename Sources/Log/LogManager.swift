@@ -48,7 +48,7 @@ struct LogManager {
         print("  \(strNowTime)", "[\(level)]", "[" + (arrFileName.first ?? "File") + ": \(line)]")
         
         for item in items {
-            print("\n ", item)
+            print(" ", item)
         }
         
         print("╚ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═")
